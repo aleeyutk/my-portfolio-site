@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <style>
+  #skills {
+    max-width: 600px;
+    margin: 40px auto;
+    font-family: Arial, sans-serif;
+  }
+
+  .skill {
+    margin-bottom: 20px;
+  }
+
+  .progress-bar {
+    background: #e0e0e0;
+    border-radius: 30px;
+    overflow: hidden;
+    height: 25px;
+  }
+
+  .progress-fill {
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+    height: 100%;
+    line-height: 25px;
+    color: white;
+    text-align: right;
+    padding-right: 10px;
+    border-radius: 30px;
+    width: 0;
+    animation: fillProgress 2s ease-in-out forwards;
+  }
+
+  @keyframes fillProgress {
+    from { width: 0; }
+    to { width: var(--target-width); }
+  }
+</style>
+        
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#resume">Resume</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <header id="home">
+            <img src="/images/profile.jpg" alt="Profile Photo" class="profile-pic">
+            <h1 class="animate-text">Hi, I'm Aliyu</h1>
+            <p>Software Developer | Java | Python | SQL</p>
+        </header>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <p>I am a computer science graduate from Abubakar Tafawa Balewa University Bauchi,
+             i'm passionate about creativity whether it's content creation, gaming or brainstorming ideas.</p>
+              <p>I am always looking for ways to grow and improve.</p>
+             <p>My hobbies include reading and playing football amongst many.</p>
+             
+        </section>
+        
+        <section id="skills">
+			  <h2>My Skills</h2>
+			   <div class="skill">
+			    <span>Networking</span>
+			    <div class="progress-bar"><div class="progress-fill" style="width: 50%;">50%</div></div>
+			  </div>
+			  
+			  <div class="skill">
+			    <span>Java</span>
+			    <div class="progress-bar"><div class="progress-fill" style="width: 70%;">70%</div></div>
+			  </div>
+			
+			  <div class="skill">
+			    <span>Python</span>
+			    <div class="progress-bar"><div class="progress-fill" style="width: 80%;">80%</div></div>
+			  </div>
+			
+			  <div class="skill">
+			    <span>SQL</span>
+			    <div class="progress-bar"><div class="progress-fill" style="width: 85%;">85%</div></div>
+			  </div>
+			
+			  
+			   <div class="skill">
+			    <span>Computer Operations</span>
+			    <div class="progress-bar"><div class="progress-fill" style="width: 100%;">100%</div></div>
+			  </div>
+			  
+			   <div class="skill">
+			    <span>Learning</span>
+			    <div class="progress-bar"><div class="progress-fill" style="width: 100%;">100%</div></div>
+			  </div>
+		</section>
+        
+
+       <section id="projects">
+  <h2>My Projects</h2>
+
+<div class="project">
+  <h3>Hybrid Data Security Models</h3>
+  <p>A comparative study combining encryption (AES, RSA) with steganography (LSB/image/audio hiding) for enhanced data confidentiality.</p>
+  <p><strong>Tech:</strong> Java, Encryption, Cryptography, Swing</p>
+  <a href="https://github.com/aleeyutk/final-year-project" target="_blank">GitHub repo</a> |
+  <a href="/files/hybrid-security-paper.pdf" target="_blank">View Paper</a>
+</div>
+
+<div class="project">
+  <h3>Simple Java Banking System</h3>
+  <p>Console-based banking system with core Java and SQL. Supports account creation, deposits, withdrawals, and transaction history with secure data handling.</p>
+  <p><strong>Tech:</strong> Java, JDBC, SQL</p>
+  <a href="https://github.com/aleeyutk/java-projects" target="_blank">GitHub</a>
+</div>
+
+<div class="project">
+  <h3>Expense Tracker</h3>
+  <p>A command-line Java application that helps track and categorize daily expenses. Includes features like monthly summaries and category-based filtering.</p>
+  <p><strong>Tech:</strong> Java, JDBC, SQL</p>
+  <a href="https://github.com/aleeyutk" target="_blank">GitHub</a>
+</div>
+
+
+
+
+  <div class="project">
+    <h3>Java Chat Application</h3>
+    <p>Java-based chat app with real-time messaging and file sharing.</p>
+    <video width="320" controls>
+      <source src="/videos/chat-demo.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</section>
+
+<style>
+  #projects {
+    max-width: 800px;
+    margin: 60px auto;
+    font-family: Arial, sans-serif;
+  }
+
+  .project {
+    background: #f8f8f8;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+
+  .project h3 {
+    margin-top: 0;
+  }
+
+  .project a {
+    color: #0072ff;
+    margin-right: 10px;
+  }
+
+  .project video {
+    margin-top: 10px;
+    border-radius: 10px;
+  }
+</style>
+       
+
+        <section id="resume">
+            <h2>Resume</h2>
+            <p><a href="/files/resume.pdf" target="_blank">Download My Resume (PDF)</a></p>
+        </section>
+
+        <section id="contact">
+            <h2>Send me an email</h2>
+            <form action="/contact" method="post">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+            <p th:if="${success}" class="success">Message sent successfully!</p>
+        </section>
+    </div>
+</body>
+
+<script>
+  document.querySelectorAll('.progress-fill').forEach(el => {
+    const targetWidth = el.style.width;
+    el.style.setProperty('--target-width', targetWidth);
+    el.style.width = '0';
+    setTimeout(() => el.style.width = targetWidth, 300);
+  });
+</script>
+
+</html>
