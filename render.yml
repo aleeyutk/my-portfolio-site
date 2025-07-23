@@ -1,9 +1,13 @@
 services:
   - type: web
-    name: your-portfolio-name
+    name: your-portfolio
     runtime: java
-    buildCommand: mvn clean package
+    buildCommand: |
+      chmod +x mvnw
+      ./mvnw clean package
     startCommand: java -jar target/portfolio-*.jar
     env:
+      - key: JAVA_VERSION
+        value: 17
       - key: SPRING_PROFILES_ACTIVE
         value: prod
