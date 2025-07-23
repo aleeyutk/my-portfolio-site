@@ -1,37 +1,51 @@
-package com.yourname.portfolio.controller;
+package com.haidara.portfolio.controller;
 
-import com.yourname.portfolio.model.ContactMessage;
-import com.yourname.portfolio.repository.ContactMessageRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.haidara.portfolio.dto.ContactForm;
+import com.haidara.portfolio.service.EmailService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HomeController {
-
-    @Autowired
-    private ContactMessageRepository messageRepo;
+    
+    private final EmailService emailService;
+    
+    public HomeController(EmailService emailService) {
+        this.emailService = emailService;
+    }
 
     @GetMapping("/")
-    public String home() {
+    public String home(Model model) {
+        model.addAttribute("contactForm", new ContactForm());
         return "index";
     }
 
     @PostMapping("/contact")
-    public String handleContact(@RequestParam String name,
-                                @RequestParam String email,
-                                @RequestParam String message,
-                                Model model) {
-        ContactMessage msg = new ContactMessage();
-        msg.setName(name);
-        msg.setEmail(email);
-        msg.setMessage(message);
-        messageRepo.save(msg);
-
-        model.addAttribute("success", true);
+    public String handleContact(
+            @Valid ContactForm contactForm,
+            BindingResult bindingResult,
+            Model model) {
+        
+        if (bindingResult.hasErrors()) {
+            return "index";
+        }
+        
+        try {
+            emailService.sendContactEmail(
+                contactForm.getName(),
+                contactForm.getEmail(),
+                contactForm.getMessage()
+            );
+            model.addAttribute("success", true);
+            model.addAttribute("contactForm", new ContactForm()); // Reset form
+        } catch (Exception e) {
+            model.addAttribute("error", "Failed to send message. Please try again later.");
+        }
+        
         return "index";
     }
 }

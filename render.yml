@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: your-portfolio-name
+    runtime: java
+    buildCommand: mvn clean package
+    startCommand: java -jar target/portfolio-*.jar
+    env:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod

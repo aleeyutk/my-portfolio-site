@@ -1,6 +1,6 @@
-package com.yourname.portfolio.repository;
+package com.haidara.portfolio.repository;
 
-import com.yourname.portfolio.model.ContactMessage;
+import com.haidara.portfolio.model.ContactMessage;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ContactMessageRepository extends JpaRepository<ContactMessage, Long> {

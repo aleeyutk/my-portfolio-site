@@ -133,14 +133,14 @@
 
 
 
-  <div class="project">
+<div class="project">
     <h3>Java Chat Application</h3>
     <p>Java-based chat app with real-time messaging and file sharing.</p>
     <video width="320" controls>
       <source src="/videos/chat-demo.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
-  </div>
+</div>
 </section>
 
 <style>
@@ -179,17 +179,29 @@
             <p><a href="/files/resume.pdf" target="_blank">Download My Resume (PDF)</a></p>
         </section>
 
-        <section id="contact">
-            <h2>Send me an email</h2>
-            <form action="/contact" method="post">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="message" placeholder="Your Message" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-            <p th:if="${success}" class="success">Message sent successfully!</p>
-        </section>
-    </div>
+ <section id="contact">
+    <h2>Send me an email</h2>
+    <form action="/contact" method="post" th:object="${contactForm}">
+        <input type="text" name="name" placeholder="Your Name" required
+               th:field="*{name}" th:class="${#fields.hasErrors('name')} ? 'error-field' : ''">
+        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></span>
+        
+        <input type="email" name="email" placeholder="Your Email" required
+               th:field="*{email}" th:class="${#fields.hasErrors('email')} ? 'error-field' : ''">
+        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></span>
+        
+        <textarea name="message" placeholder="Your Message" required
+                  th:field="*{message}" th:class="${#fields.hasErrors('message')} ? 'error-field' : ''"></textarea>
+        <span th:if="${#fields.hasErrors('message')}" th:errors="*{message}" class="error"></span>
+        
+        <button type="submit">Send Message</button>
+        
+        <p th:if="${success}" class="success">Message sent successfully!</p>
+        <p th:if="${error}" class="error" th:text="${error}"></p>
+    </form>
+</section>
+       
+</div>
 </body>
 
 <script>

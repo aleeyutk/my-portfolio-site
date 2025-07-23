@@ -1,0 +1,12 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch PortfolioApplication",
+            "request": "launch",
+            "mainClass": "com.haidara.portfolio.PortfolioApplication",
+            "projectName": "portfolio"
+        }
+    ]
+}

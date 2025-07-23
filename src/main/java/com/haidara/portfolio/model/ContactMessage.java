@@ -1,4 +1,4 @@
-package com.yourname.portfolio.model;
+package com.haidara.portfolio.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
