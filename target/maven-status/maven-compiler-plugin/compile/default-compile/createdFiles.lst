@@ -1,0 +1,11 @@
+com\yourname\portfolio\service\EmailService.class
+com\haidara\portfolio\dto\ContactForm.class
+com\yourname\portfolio\model\ContactMessage.class
+com\haidara\portfolio\repository\ContactMessageRepository.class
+com\haidara\portfolio\exception\GlobalExceptionHandler.class
+com\haidara\portfolio\service\EmailService.class
+com\haidara\portfolio\controller\HomeController.class
+com\haidara\portfolio\PortfolioApplication.class
+com\yourname\portfolio\controller\HomeController.class
+com\haidara\portfolio\model\ContactMessage.class
+com\yourname\portfolio\repository\ContactMessageRepository.class
